@@ -1,4 +1,24 @@
 Codigo del Router 1
 
-Codigo Version 1 
---------------------------------------------------------
+Codigo Version 1
+----------------------------------------------------------------------
+Router>enable
+Router#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface lo0
+Router(config-if)#ip address 1.1.1.1 255.255.255.0
+Router(config-if)#exit
+Router(config)#interface se0/0
+Router(config-if)#ip address 10.0.0.24 255.255.255.252
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface se0/1
+Router(config-if)#ip address 10.0.0.28 255.255.255.252
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface Ge0/0
+Router(config-if)#ip address 172.16.6.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#router ospf 100
+
