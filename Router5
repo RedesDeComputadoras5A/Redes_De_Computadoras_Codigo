@@ -2,3 +2,38 @@ Codigo del Router 5
 
 Codigo Version 1
 ---------------------------------------------------------------------------
+Router0 is now available
+
+Press RETURN to get started.
+Router>ena
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface s0/0/0
+Router(config-if)#no shutdown
+Router(config-if)#ip address 10.0.0.21 255.255.255.252
+Router(config-if)#exit
+Router(config)#interface g0/0
+Router(config-if)#no shutdown
+Router(config-if)#ip address 10.0.0.29 255.255.255.252
+Router(config-if)#exit
+Router(config)#int Lo0
+Router(config-if)#ip address 5.5.5.5 255.255.255.0
+*Nov 10 20:12:05.011: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+Router(config-if)#exit
+Router(config)#exit
+Router#show ip interface brief
+Interface                  IP-Address      OK? Method Status                Protocol
+Embedded-Service-Engine0/0 unassigned      YES NVRAM  administratively down down
+GigabitEthernet0/0         10.0.0.29       YES manual down                  down
+GigabitEthernet0/1         unassigned      YES NVRAM  administratively down down
+Serial0/0/0                10.0.0.21       YES manual down                  down
+Serial0/0/1                unassigned      YES NVRAM  administratively down down
+Loopback0                  5.5.5.5         YES manual up                    up  
+Router#configure terminal
+Router(config)#router ospf 100
+Router(config-router)#network 10.0.0.20 255.255.255.252 area 1
+Router(config-router)#network 10.0.0.28 255.255.255.252 area 1
+Router(config-router)#exit
+Router(config)#int se0/0/0
+Router(config-if)#clock rate 64000
+Router(config-if)#
