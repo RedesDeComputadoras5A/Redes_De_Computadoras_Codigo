@@ -2,3 +2,46 @@ Codigo del Router 2
 
 Codigo Version 1 
 -------------------------------------------------------------------
+
+******Router R2******
+
+R2# config terminal
+R2()#interface se0/0
+R2(-)#ip address 10.0.0.9 255.255.255.252 
+R2(-)#clock rate 64000
+R2(-)#no shut
+R2(-)#description toR-R6
+R2(-)#end
+
+
+R2# config terminal
+R2()#interface se0/1
+R2(-)#ip address 10.0.0.9 255.255.255.252 
+R2(-)#no shut
+R2(-)#description toR-R4
+R2(-)#end
+
+R2# config terminal
+R2()#interface fa0/0
+R2(-)#ip address 172.16.6.128 255.255.255.128
+R2(-)#no shut
+R2(-)#end
+
+R2# config terminal
+R2()#interface fa0/1
+R2(-)#ip address 10.0.0.14 255.255.255.252 
+R2(-)#no shut
+R2(-)#description toR-R0
+R2(-)#end
+
+R2# config terminal
+R2()#interface loopback
+R2(-)#ip address 2.2.2.2 255.255.255.0
+R2(-)#end
+
+R2# config terminal
+R2()#router eigrp 100
+R2(-)#network 10.0.0.4 
+R2(-)#network 10.0.0.8
+R2(-)#network 10.0.0.12
+R2(-)#end
